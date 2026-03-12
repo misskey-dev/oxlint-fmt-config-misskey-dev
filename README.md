@@ -15,7 +15,7 @@ pnpm add -D @misskey-dev/oxlint-fmt-config
 Create `oxlint.config.ts` in the root of your project with the following content:
 
 ```ts
-import { defineMisskeyDevOxlintConfig } from './built/index.mjs';
+import { defineMisskeyDevOxlintConfig } from '@misskey-dev/oxlint-fmt-config';
 
 export default defineMisskeyDevOxlintConfig({
 	// Disable specific rulesets
