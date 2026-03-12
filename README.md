@@ -31,3 +31,7 @@ export default defineMisskeyDevOxlintConfig({
 	},
 });
 ```
+
+## License
+
+MIT
