@@ -15,10 +15,6 @@
 		"./oxlint": {
 			"import": "./built/oxlint/index.mjs",
 			"types": "./built/oxlint/index.d.mts"
-		},
-		"./oxfmt": {
-			"import": "./built/oxfmt/index.mjs",
-			"types": "./built/oxfmt/index.d.mts"
 		}
 	},
 	"scripts": {
