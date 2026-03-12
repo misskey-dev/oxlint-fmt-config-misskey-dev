@@ -1,0 +1,48 @@
+{
+	"name": "@misskey-dev/oxlint-fmt-config",
+	"version": "0.0.1",
+	"description": "oxlint/oxfmt config for misskey-dev",
+	"license": "MIT",
+	"files": [
+		"built"
+	],
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./built/index.mjs",
+			"types": "./built/index.d.mts"
+		},
+		"./oxlint": {
+			"import": "./built/oxlint/index.mjs",
+			"types": "./built/oxlint/index.d.mts"
+		},
+		"./oxfmt": {
+			"import": "./built/oxfmt/index.mjs",
+			"types": "./built/oxfmt/index.d.mts"
+		}
+	},
+	"scripts": {
+		"build": "tsdown",
+		"lint": "pnpm build && oxlint"
+	},
+	"devDependencies": {
+		"@stylistic/eslint-plugin": "5.10.0",
+		"oxfmt": "0.38.0",
+		"oxlint": "1.53.0",
+		"oxlint-tsgolint": "0.16.0",
+		"tsdown": "0.21.2",
+		"typescript": "5.9.3"
+	},
+	"peerDependencies": {
+		"@stylistic/eslint-plugin": "5.10.0",
+		"oxfmt": "0.38.0",
+		"oxlint": "^1",
+		"oxlint-tsgolint": "0.16.0"
+	},
+	"peerDependenciesMeta": {
+		"@stylistic/eslint-plugin": {
+			"optional": true
+		}
+	},
+	"packageManager": "pnpm@10.12.4"
+}
