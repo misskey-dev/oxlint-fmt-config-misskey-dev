@@ -32,6 +32,31 @@ export default defineMisskeyDevOxlintConfig({
 });
 ```
 
+Or if you are using [Vite+](https://github.com/voidzero-dev/vite-plus), create `vite.config.ts` in the root of your project with the following content:
+
+```ts
+import { defineConfig } from 'vite-plus';
+import { defineMisskeyDevOxlintConfig } from '@misskey-dev/oxlint-fmt-config';
+
+export default defineConfig({
+	// other config...
+
+	lint: defineMisskeyDevOxlintConfig({
+		// Disable specific rulesets
+		features: {
+			stylistic: false,
+		},
+
+		// Override the default config
+		overrides: {
+			ignorePatterns: [
+				'built/**/*',
+			],
+		},
+	}),
+});
+```
+
 ## License
 
 MIT
