@@ -1,7 +1,9 @@
 import { defineConfig } from 'oxlint';
 
 import { jsConfig } from './javascript.js';
+import type { JsLintOptions } from './javascript.js';
 import { tsConfig } from './typescript.js';
+import type { TsLintOptions } from './typescript.js';
 
 import type { OxlintConfig } from 'oxlint';
 
@@ -13,16 +15,23 @@ interface MisskeyDevOxlintConfigOptions {
 		ts?: boolean;
 		/** Defaults to true */
 		stylistic?: boolean;
+		/** Defaults to false - This is an experimental feature and can be removed in the future. Using `stylistic` and `experimentalCorsaStylistic` at the same time is not possible. */
+		experimentalCorsaStylistic?: boolean;
 	};
 	overrides?: Partial<OxlintConfig>;
 }
 
 function defineMisskeyDevOxlintConfig(opts: MisskeyDevOxlintConfigOptions = {}): OxlintConfig {
+	const additonalFeatureFlags: JsLintOptions & TsLintOptions = {
+		enableStylistic: opts.features?.stylistic ?? true,
+		enableCorsaStylistic: opts.features?.experimentalCorsaStylistic ?? false,
+	};
+
 	return defineConfig({
 		...opts.overrides,
 		extends: [
-			...((opts.features?.js ?? true) ? [jsConfig(opts.features?.stylistic)] : []),
-			...((opts.features?.ts ?? true) ? [tsConfig(opts.features?.stylistic)] : []),
+			...((opts.features?.js ?? true) ? [jsConfig(additonalFeatureFlags)] : []),
+			...((opts.features?.ts ?? true) ? [tsConfig(additonalFeatureFlags)] : []),
 			...(opts.overrides?.extends ?? []),
 		],
 	});

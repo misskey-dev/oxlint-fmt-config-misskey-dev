@@ -24,6 +24,7 @@
 	},
 	"devDependencies": {
 		"@stylistic/eslint-plugin": "5.10.0",
+		"corsa-oxlint": "^0.37.0",
 		"oxlint": "1.68.0",
 		"oxlint-tsgolint": "0.23.0",
 		"tsdown": "0.22.2",
@@ -31,11 +32,15 @@
 	},
 	"peerDependencies": {
 		"@stylistic/eslint-plugin": "5.10.0",
+		"corsa-oxlint": "0.37.0",
 		"oxlint": "^1",
-		"oxlint-tsgolint": "0.17.1"
+		"oxlint-tsgolint": "0.23.0"
 	},
 	"peerDependenciesMeta": {
 		"@stylistic/eslint-plugin": {
+			"optional": true
+		},
+		"corsa-oxlint": {
 			"optional": true
 		}
 	}
