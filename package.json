@@ -1,6 +1,6 @@
 {
 	"name": "@misskey-dev/oxlint-fmt-config",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "oxlint/oxfmt config for misskey-dev",
 	"license": "MIT",
 	"packageManager": "pnpm@11.5.2",
