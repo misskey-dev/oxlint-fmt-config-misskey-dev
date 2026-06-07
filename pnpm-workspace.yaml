@@ -1,0 +1,3 @@
+minimumReleaseAgeExclude:
+  - '@corsa-bind/*'
+  - corsa-oxlint
