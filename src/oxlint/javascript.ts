@@ -1,7 +1,7 @@
 import { defineConfig } from 'oxlint';
 
 import { stylisticRules } from './stylistic.js';
-import { corsaStylisticRules } from './corsa-stylistic.js';
+import { corsaStylisticBehaviors } from './corsa-stylistic.js';
 
 import type { DummyRuleMap } from 'oxlint';
 
@@ -38,15 +38,15 @@ export type JsLintOptions = {
 };
 
 export function jsConfig(options: JsLintOptions = {}) {
-	const { enableStylistic = true, enableCorsaStylistic = false } = options;
+	const {enableStylistic = true, enableCorsaStylistic = false} = options;
 
 	if (enableStylistic && enableCorsaStylistic) {
 		throw new Error('Enabling both enableStylistic and enableCorsaStylistic at the same time is not allowed.');
 	}
 
 	return defineConfig({
-		...(enableStylistic || enableCorsaStylistic ? {
-			jsPlugins: [enableCorsaStylistic ? 'corsa-oxlint/stylistic' : '@stylistic/eslint-plugin'],
+		...(enableStylistic ? {
+			jsPlugins: ['@stylistic/eslint-plugin'],
 		} : {}),
 		overrides: [
 			{
@@ -54,7 +54,7 @@ export function jsConfig(options: JsLintOptions = {}) {
 				rules: {
 					...jsRules,
 					...(enableStylistic ? stylisticRules : {}),
-					...(enableCorsaStylistic ? corsaStylisticRules : {}),
+					...(enableCorsaStylistic ? corsaStylisticBehaviors : {}),
 				},
 			},
 		],

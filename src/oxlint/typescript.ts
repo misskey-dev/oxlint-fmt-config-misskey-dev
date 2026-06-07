@@ -2,7 +2,7 @@ import { defineConfig } from 'oxlint';
 
 import { jsRules } from './javascript.js';
 import { stylisticRules } from './stylistic.js';
-import { corsaStylisticRules } from './corsa-stylistic.js';
+import { corsaStylisticBehaviors } from './corsa-stylistic.js';
 
 import type { DummyRuleMap } from 'oxlint';
 
@@ -54,9 +54,11 @@ export function tsConfig(options: TsLintOptions = {}) {
 		throw new Error('Enabling both enableStylistic and enableCorsaStylistic at the same time is not allowed.');
 	}
 
+	console.log(corsaStylisticBehaviors);
+
 	return defineConfig({
-		...(enableStylistic || enableCorsaStylistic ? {
-			jsPlugins: [enableCorsaStylistic ? 'corsa-oxlint/stylistic' : '@stylistic/eslint-plugin'],
+		...(enableStylistic ? {
+			jsPlugins: ['@stylistic/eslint-plugin'],
 		} : {}),
 		options: {
 			typeAware: true,
@@ -68,7 +70,7 @@ export function tsConfig(options: TsLintOptions = {}) {
 					...jsRules,
 					...tsRules,
 					...(enableStylistic ? stylisticRules : {}),
-					...(enableCorsaStylistic ? corsaStylisticRules : {}),
+					...(enableCorsaStylistic ? corsaStylisticBehaviors : {}),
 				},
 			},
 		],

@@ -4,6 +4,7 @@ import { jsConfig } from './javascript.js';
 import type { JsLintOptions } from './javascript.js';
 import { tsConfig } from './typescript.js';
 import type { TsLintOptions } from './typescript.js';
+import { corsaStylisticRulesets } from './corsa-stylistic.js';
 
 import type { OxlintConfig } from 'oxlint';
 
@@ -29,6 +30,14 @@ function defineMisskeyDevOxlintConfig(opts: MisskeyDevOxlintConfigOptions = {}):
 
 	return defineConfig({
 		...opts.overrides,
+		...(additonalFeatureFlags.enableCorsaStylistic ? {
+			jsPlugins: ['corsa-oxlint/stylistic'],
+			settings: {
+				corsaStylistic: {
+					rules: corsaStylisticRulesets,
+				},
+			},
+		} : {}),
 		extends: [
 			...((opts.features?.js ?? true) ? [jsConfig(additonalFeatureFlags)] : []),
 			...((opts.features?.ts ?? true) ? [tsConfig(additonalFeatureFlags)] : []),
