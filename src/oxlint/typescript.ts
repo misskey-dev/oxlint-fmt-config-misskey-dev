@@ -54,8 +54,6 @@ export function tsConfig(options: TsLintOptions = {}) {
 		throw new Error('Enabling both enableStylistic and enableCorsaStylistic at the same time is not allowed.');
 	}
 
-	console.log(corsaStylisticBehaviors);
-
 	return defineConfig({
 		...(enableStylistic ? {
 			jsPlugins: ['@stylistic/eslint-plugin'],
