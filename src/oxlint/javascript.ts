@@ -1,6 +1,7 @@
 import { defineConfig } from 'oxlint';
 
 import { stylisticRules } from './stylistic.js';
+import { corsaStylisticRules } from './corsa-stylistic.js';
 
 import type { DummyRuleMap } from 'oxlint';
 
@@ -53,6 +54,7 @@ export function jsConfig(options: JsLintOptions = {}) {
 				rules: {
 					...jsRules,
 					...(enableStylistic ? stylisticRules : {}),
+					...(enableCorsaStylistic ? corsaStylisticRules : {}),
 				},
 			},
 		],
