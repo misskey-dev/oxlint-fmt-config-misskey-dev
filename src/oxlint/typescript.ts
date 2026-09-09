@@ -2,9 +2,8 @@ import { defineConfig } from 'oxlint';
 
 import { jsRules } from './javascript.js';
 import { stylisticRules } from './stylistic.js';
-import { corsaStylisticRules } from './corsa-stylistic.js';
 
-import type { DummyRuleMap } from 'oxlint';
+import type { OxlintConfig, DummyRuleMap } from 'oxlint';
 
 export const tsRules: DummyRuleMap = {
 	/* typescript-eslint では enforce に対応してないっぽい
@@ -16,7 +15,7 @@ export const tsRules: DummyRuleMap = {
 		}],
 	}],
 	*/
-	// migrated to oxfmt
+	// migrated to stylistic
 	// '@typescript-eslint/func-call-spacing': ['error', 'never'],
 	'typescript/no-explicit-any': ['warn'],
 	'no-unused-vars': ['warn'],
@@ -28,7 +27,7 @@ export const tsRules: DummyRuleMap = {
 	'typescript/no-misused-promises': ['warn', { checksVoidReturn: false }],
 	'typescript/consistent-type-imports': 'off',
 	'typescript/prefer-nullish-coalescing': ['warn'],
-	// Not implemented yet - use tsgolint or eslint
+	// Not implemented yet in tsgolint
 	// 'typescript/naming-convention': [
 	// 	'error',
 	// 	{
@@ -42,7 +41,7 @@ export const tsRules: DummyRuleMap = {
 	// ],
 };
 
-export function tsConfig(enableStylistic = true) {
+export function tsConfig(enableStylistic = true): OxlintConfig {
 	return defineConfig({
 		...(enableStylistic ? {
 			jsPlugins: ['@stylistic/eslint-plugin'],
@@ -57,7 +56,6 @@ export function tsConfig(enableStylistic = true) {
 					...jsRules,
 					...tsRules,
 					...(enableStylistic ? stylisticRules : {}),
-					...(enableCorsaStylistic ? corsaStylisticRules : {}),
 				},
 			},
 		],

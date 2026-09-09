@@ -32,6 +32,5 @@ export { defineMisskeyDevOxlintConfig };
 export { jsRules as oxlintJsRules } from './javascript.js';
 export { tsRules as oxlintTsRules } from './typescript.js';
 export { stylisticRules as oxlintStylisticRules } from './stylistic.js';
-export { corsaStylisticRules as oxlintCorsaStylisticRules } from './corsa-stylistic.js';
 
 export type { MisskeyDevOxlintConfigOptions };

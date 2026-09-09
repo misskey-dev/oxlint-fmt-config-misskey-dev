@@ -1,20 +1,18 @@
 import { defineConfig } from 'oxlint';
 
 import { stylisticRules } from './stylistic.js';
-import { corsaStylisticRules } from './corsa-stylistic.js';
 
-import type { DummyRuleMap } from 'oxlint';
+import type { OxlintConfig, DummyRuleMap } from 'oxlint';
 
 export const jsRules: DummyRuleMap = {
-	/* TODO: path aliasを使わないとwarnする
-	'no-restricted-imports': ['warn', {
-		'patterns': [
-		],
-	}],
-	*/
+	// TODO: path aliasを使わないとwarnする
+	// 'no-restricted-imports': ['warn', {
+	// 	'patterns': [
+	// 	],
+	// }],
 	eqeqeq: ['error', 'always', { null: 'ignore' }],
 	'no-var': ['error'],
-	// 'prefer-arrow-callback': ['error'], // This is not yet supported by oxlint
+	'prefer-arrow-callback': ['error'],
 	'no-throw-literal': ['error'],
 	'no-param-reassign': ['warn'],
 	'no-constant-condition': ['warn'],
@@ -32,7 +30,7 @@ export const jsRules: DummyRuleMap = {
 	// }],
 };
 
-export function jsConfig(enableStylistic = true) {
+export function jsConfig(enableStylistic = true): OxlintConfig {
 	return defineConfig({
 		...(enableStylistic ? {
 			jsPlugins: ['@stylistic/eslint-plugin'],
@@ -43,7 +41,6 @@ export function jsConfig(enableStylistic = true) {
 				rules: {
 					...jsRules,
 					...(enableStylistic ? stylisticRules : {}),
-					...(enableCorsaStylistic ? corsaStylisticRules : {}),
 				},
 			},
 		],

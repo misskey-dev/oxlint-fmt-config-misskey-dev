@@ -43,4 +43,5 @@ export const stylisticRules: DummyRuleMap = {
 	'@stylistic/semi-spacing': ['error', { 'before': false, 'after': true }],
 	'@stylistic/space-before-blocks': ['error', 'always'],
 	'@stylistic/space-infix-ops': ['error'],
+	'@stylistic/function-call-spacing': ['error', 'never'],
 };
