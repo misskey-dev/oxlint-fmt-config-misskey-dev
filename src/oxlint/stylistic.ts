@@ -9,7 +9,7 @@ export const stylisticRules: DummyRuleMap = {
 	'@stylistic/brace-style': ['error', '1tbs', {
 		'allowSingleLine': true,
 	}],
-	'@stylistic/comma-dangle': ['warn', 'always-multiline'],
+	'@stylistic/comma-dangle': ['error', 'always-multiline'],
 	'@stylistic/comma-spacing': ['error', { 'before': false, 'after': true }],
 	'@stylistic/eol-last': ['error', 'always'],
 	'@stylistic/key-spacing': ['error', {

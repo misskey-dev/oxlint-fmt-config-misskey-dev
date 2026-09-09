@@ -17,7 +17,7 @@ export const jsRules: DummyRuleMap = {
 	'no-param-reassign': ['warn'],
 	'no-constant-condition': ['warn'],
 	'no-empty-pattern': ['warn'],
-	'no-async-promise-executor': ['warn'],
+	'no-async-promise-executor': ['error'],
 	'no-useless-escape': ['off'],
 	'no-control-regex': ['warn'],
 	'no-empty': ['warn'],
