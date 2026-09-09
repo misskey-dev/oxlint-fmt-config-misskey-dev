@@ -44,4 +44,9 @@ export const stylisticRules: DummyRuleMap = {
 	'@stylistic/space-before-blocks': ['error', 'always'],
 	'@stylistic/space-infix-ops': ['error'],
 	'@stylistic/function-call-spacing': ['error', 'never'],
+	'@stylistic/space-before-function-paren': ['error', {
+		anonymous: 'always',
+		named: 'never',
+		asyncArrow: 'always',
+	}],
 };
