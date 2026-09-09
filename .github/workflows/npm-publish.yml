@@ -37,7 +37,6 @@ jobs:
 
       - name: Publish package
         run: |
-          corepack enable
           pnpm i --frozen-lockfile
           pnpm build
           pnpm publish --access public --no-git-checks --provenance
