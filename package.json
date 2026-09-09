@@ -29,15 +29,15 @@
 	},
 	"devDependencies": {
 		"@stylistic/eslint-plugin": "5.10.0",
-		"oxlint": "^1.76.0",
+		"oxlint": "^1.82.0",
 		"oxlint-tsgolint": "7.0.2001",
-		"tsdown": "0.22.14",
+		"tsdown": "0.23.0",
 		"typescript": "7.0.2"
 	},
 	"peerDependencies": {
 		"@stylistic/eslint-plugin": "5.10.0",
 		"oxlint": "^1",
-		"oxlint-tsgolint": "0.17.1"
+		"oxlint-tsgolint": "^7"
 	},
 	"peerDependenciesMeta": {
 		"@stylistic/eslint-plugin": {
