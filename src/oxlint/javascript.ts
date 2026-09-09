@@ -14,7 +14,7 @@ export const jsRules: DummyRuleMap = {
 	*/
 	eqeqeq: ['error', 'always', { null: 'ignore' }],
 	'no-var': ['error'],
-	'prefer-arrow-callback': ['error'],
+	// 'prefer-arrow-callback': ['error'], // This is not yet supported by oxlint
 	'no-throw-literal': ['error'],
 	'no-param-reassign': ['warn'],
 	'no-constant-condition': ['warn'],
@@ -32,21 +32,10 @@ export const jsRules: DummyRuleMap = {
 	// }],
 };
 
-export type JsLintOptions = {
-	enableStylistic?: boolean;
-	enableCorsaStylistic?: boolean;
-};
-
-export function jsConfig(options: JsLintOptions = {}) {
-	const { enableStylistic = true, enableCorsaStylistic = false } = options;
-
-	if (enableStylistic && enableCorsaStylistic) {
-		throw new Error('Enabling both enableStylistic and enableCorsaStylistic at the same time is not allowed.');
-	}
-
+export function jsConfig(enableStylistic = true) {
 	return defineConfig({
-		...(enableStylistic || enableCorsaStylistic ? {
-			jsPlugins: [enableCorsaStylistic ? 'corsa-oxlint/stylistic' : '@stylistic/eslint-plugin'],
+		...(enableStylistic ? {
+			jsPlugins: ['@stylistic/eslint-plugin'],
 		} : {}),
 		overrides: [
 			{

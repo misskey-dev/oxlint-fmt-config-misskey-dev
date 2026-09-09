@@ -16,7 +16,7 @@ export const tsRules: DummyRuleMap = {
 		}],
 	}],
 	*/
-	// migrated to oxfmt or stylistic
+	// migrated to oxfmt
 	// '@typescript-eslint/func-call-spacing': ['error', 'never'],
 	'typescript/no-explicit-any': ['warn'],
 	'no-unused-vars': ['warn'],
@@ -42,21 +42,10 @@ export const tsRules: DummyRuleMap = {
 	// ],
 };
 
-export type TsLintOptions = {
-	enableStylistic?: boolean;
-	enableCorsaStylistic?: boolean;
-};
-
-export function tsConfig(options: TsLintOptions = {}) {
-	const { enableStylistic = true, enableCorsaStylistic = false } = options;
-
-	if (enableStylistic && enableCorsaStylistic) {
-		throw new Error('Enabling both enableStylistic and enableCorsaStylistic at the same time is not allowed.');
-	}
-
+export function tsConfig(enableStylistic = true) {
 	return defineConfig({
-		...(enableStylistic || enableCorsaStylistic ? {
-			jsPlugins: [enableCorsaStylistic ? 'corsa-oxlint/stylistic' : '@stylistic/eslint-plugin'],
+		...(enableStylistic ? {
+			jsPlugins: ['@stylistic/eslint-plugin'],
 		} : {}),
 		options: {
 			typeAware: true,
