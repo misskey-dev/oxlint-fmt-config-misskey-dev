@@ -24,22 +24,29 @@
 	},
 	"scripts": {
 		"build": "tsdown",
-		"typecheck": "tsc --noEmit",
+		"typecheck": "tsrs --fast --noEmit",
 		"lint": "pnpm build && oxlint"
 	},
 	"devDependencies": {
 		"@stylistic/eslint-plugin": "5.10.0",
 		"oxlint": "^1.82.0",
-		"oxlint-tsgolint": "7.0.2001",
 		"tsdown": "0.23.0",
+		"tsrs": "0.25.0-ts7.1.0-beta",
 		"typescript": "7.0.2"
 	},
 	"peerDependencies": {
 		"@stylistic/eslint-plugin": "5.10.0",
 		"oxlint": "^1",
-		"oxlint-tsgolint": "^7"
+		"oxlint-tsgolint": "^7",
+		"tsrs": "0.25.0-ts7.1.0-beta"
 	},
 	"peerDependenciesMeta": {
+		"oxlint-tsgolint": {
+			"optional": true
+		},
+		"tsrs": {
+			"optional": true
+		},
 		"@stylistic/eslint-plugin": {
 			"optional": true
 		}
