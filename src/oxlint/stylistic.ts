@@ -1,7 +1,6 @@
 import type { DummyRuleMap } from 'oxlint';
 
 export const stylisticRules: DummyRuleMap = {
-	'@stylistic/array-bracket-spacing': ['error', 'never'],
 	'@stylistic/arrow-spacing': ['error', {
 		'before': true,
 		'after': true,
@@ -28,9 +27,18 @@ export const stylisticRules: DummyRuleMap = {
 		'ObjectExpression': 'first',
 	}],
 	'@stylistic/lines-between-class-members': 'off',
+	'@stylistic/list-style': ['error', {
+		'singleLine': {
+			'spacing': 'never',
+		},
+		'overrides': {
+			'{}': { 'singleLine': { 'spacing': 'always' } },
+			'()': 'off',
+			'<>': 'off',
+		},
+	}],
 	'@stylistic/no-multi-spaces': ['error'],
 	'@stylistic/no-multiple-empty-lines': ['error', { 'max': 1 }],
-	'@stylistic/object-curly-spacing': ['error', 'always'],
 	'@stylistic/padded-blocks': ['error', 'never'],
 	'@stylistic/nonblock-statement-body-position': ['error', 'beside'],
 	'@stylistic/padding-line-between-statements': [
@@ -48,5 +56,9 @@ export const stylisticRules: DummyRuleMap = {
 		anonymous: 'always',
 		named: 'never',
 		asyncArrow: 'always',
+	}],
+	'@stylistic/type-annotation-spacing': ['error', {
+		before: false,
+		after: true,
 	}],
 };
